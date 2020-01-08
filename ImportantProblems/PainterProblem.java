@@ -1,6 +1,5 @@
 package HackerBlocks.Arrays;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class PainterProblem {
@@ -10,24 +9,23 @@ public class PainterProblem {
 		Scanner scn = new Scanner(System.in);
 		int nop = scn.nextInt();
 		int nob = scn.nextInt();
-		int[] boards = new int[nob];
-		Arrays.sort(boards);
-		int sum = 0;
+		long[] boards = new long[nob];
+		long sum = 0;
 		for (int i = 0; i < boards.length; i++) {
-			boards[i] = scn.nextInt();
+			boards[i] = scn.nextLong();
 			sum += boards[i];
 		}
-		int start = boards[boards.length - 1];
+		long start = boards[boards.length - 1];
 		System.out.println(minTime(boards, start, sum, nop));
 	}
 
 	// using binary search
-	public static int minTime(int[] boards, int start, int end, int nop) {
+	public static long minTime(long[] boards, long start, long end, int nop) {
 
-		int finalAns = 0;
+		long finalAns = 0;
 
 		while (start <= end) {
-			int mid = (start + end) / 2;
+			long mid = (start + end) / 2;
 
 			if (ifvalidConfig(boards, nop, mid)) {
 				finalAns = mid;
@@ -40,10 +38,10 @@ public class PainterProblem {
 		return finalAns;
 	}
 
-	private static boolean ifvalidConfig(int[] board, int nop, int mid) {
+	private static boolean ifvalidConfig(long[] board, int nop, long mid) {
 
 		int painters = 1;
-		int current_board = 0;
+		long current_board = 0;
 
 		for (int i = 0; i < board.length; i++) {
 
