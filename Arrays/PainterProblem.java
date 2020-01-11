@@ -11,14 +11,14 @@ public class PainterProblem {
 		int nop = scn.nextInt();
 		int nob = scn.nextInt();
 		int[] boards = new int[nob];
-		Arrays.sort(boards);
 		int sum = 0;
 		for (int i = 0; i < boards.length; i++) {
 			boards[i] = scn.nextInt();
 			sum += boards[i];
 		}
+		Arrays.sort(boards);
 		int start = boards[boards.length - 1];
-		System.out.println(minTime(boards, start, sum, nop));
+		System.out.println(minTime(boards, 0, sum, nop));
 	}
 
 	// using binary search
