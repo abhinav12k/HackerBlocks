@@ -1,16 +1,27 @@
-package HackerBlocks.Arrays;
+package HackerBlocks.Strings;
 
 import java.util.Scanner;
 
-public class isPalindrom {
+public class CountPalindromicSubstrings {
 
 	public static void main(String[] args) {
 
 		Scanner scn = new Scanner(System.in);
 		String str = scn.next();
+		System.out.println(countPalindrome(str));
 
-		System.out.println(isPalindrome(str));
+	}
 
+	private static int countPalindrome(String str) {
+		int count = 0;
+		for (int si = 0; si < str.length(); si++) {
+			for (int ei = si + 1; ei <= str.length(); ei++) {
+				if (isPalindrome(str.substring(si, ei))) {
+					count++;
+				}
+			}
+		}
+		return count;
 	}
 
 	private static boolean isPalindrome(String str) {
