@@ -11,8 +11,8 @@ public class QueenProblem {
 		int tq = scn.nextInt();
 		boolean[] box = new boolean[boxes];
 
-//		System.out.println(queenPermutation(box, tq, 0, ""));
-		queenCombination(box, tq, 0, "", 0);
+		System.out.println(queenPermutation(box, tq, 0, ""));
+//		queenCombination(box, tq, 0, "", 0);
 		
 	}
 
