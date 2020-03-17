@@ -12,33 +12,34 @@ public class generateBinaryStrings {
 		while (tc-- != 0) {
 
 			String test = scn.next();
-			int size = test.length();
-			generate(test, 0, size, "");
+			generateBinary(test,"");
 
 		}
 
 	}
 
-	private static void generate(String ques, int vidx, int size, String ans) {
+
+	public static void generateBinary(String ques, String ans) {
 
 		if (ques.length() == 0) {
-			System.out.print(ans + " ");
+			System.out.println(ans);
 			return;
 		}
 
-		if (vidx > size) {
-			return;
+		for(int i=0;i<ques.length();i++) {
+			char ch = ques.charAt(i);
+			if(ch=='1'||ch=='0') {
+				generateBinary(ques.substring(i+1),ans+ch);
+				return;
+			}else if(ch=='?'){
+				//1
+				generateBinary(ques.substring(i+1),ans+1);
+				//0
+				generateBinary(ques.substring(i+1),ans+0);
+				return;
+			}
 		}
-
-		if (ques.charAt(vidx) == '?') {
-			// 1
-			generate(ques.substring(vidx + 1), vidx + 1,size, ans + 1);
-			// 0
-			generate(ques.substring(vidx + 1), vidx + 1,size, ans + 0);
-		} else {
-			generate(ques.substring(vidx + 1), vidx + 1,size, ans + ques.charAt(vidx));
-		}
-
+		
 	}
 
 }
