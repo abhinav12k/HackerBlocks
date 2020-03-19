@@ -8,39 +8,50 @@ public class DictionaryOrder {
 
 		Scanner scn = new Scanner(System.in);
 		String str = scn.next();
+		char[] ch = str.toCharArray();
 
-		larger(str, str, "");
-
+		greater(ch, 0);
 	}
 
-	private static void larger(String track, String ques, String ans) {
+	public static String greater(char[] ques, int vidx) {
 
-		if (ques.length() == 0) {
-			for (int i = 0; i < track.length() - 1; i++) {
-				int ch1 = track.charAt(i);
-				int chAns = ans.charAt(i);
+		String max = String.valueOf(ques);
 
-				if (chAns > ch1) {
-					System.out.println(ans);
-					return;
-				} else if (chAns == ch1) {
-					if (ans.charAt(i + 1) > track.charAt(i + 1)) {
-						System.out.println(ans);
-						return;
+		if (vidx == ques.length) {
+			return max;
+		}
+
+		if (vidx > ques.length) {
+			return "";
+		}
+
+		for (int i = vidx; i < ques.length; i++) {
+			for (int j = i + 1; j < ques.length; j++) {
+
+				int ch1 = ques[i];
+				int ch2 = ques[j];
+
+				if (ch1 < ch2) {
+					// swap
+					swap(ques, i, j);
+					String ans = greater(ques, vidx + 1);
+
+					if (max.compareTo(ans) < 0&&!max.equals(ans)) {
+						max = ans;
+						System.out.println(max);
 					}
-				} else {
-					return;
+					swap(ques, i, j);
 				}
 
 			}
-
 		}
-
-		for (int i = 0; i < ques.length(); i++) {
-			char ch = ques.charAt(i);
-			larger(track, ques.substring(0, i) + ques.substring(i + 1), ans + ch);
-		}
-
+		return max;
 	}
 
+	public static void swap(char[] ques, int i, int j) {
+		// swapping logic
+		char ch = ques[j];
+		ques[j] = ques[i];
+		ques[i] = ch;
+	}
 }
