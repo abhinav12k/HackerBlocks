@@ -34,7 +34,7 @@ public class N_QueenProblem {
 			return 0;
 		}
 
-		// Two possibilities either knight will be placed or not
+		// Two possibilities either Queen will be placed or not
 		// yes
 		if (isItSafe(board, cr, cc)) {
 			board[cr][cc] = true;
