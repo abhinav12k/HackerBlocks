@@ -509,4 +509,37 @@ public class LinkedList {
 
 	}
 
+	public void kReverse(int k) throws Exception {
+
+		LinkedList prev = null;
+
+		while (size != 0) {
+
+			LinkedList curr = new LinkedList();
+
+			for (int i = 1; i <= k && size > 0; i++) {
+
+				curr.addFirst(this.removeFirst());
+
+			}
+
+			if (prev == null) {
+				prev = curr;
+			} else {
+
+				prev.tail.next = curr.head;
+				prev.size += curr.size;
+				prev.tail = curr.tail;
+			}
+
+		}
+
+		this.head = prev.head;
+		this.tail = prev.tail;
+		this.size = prev.size;
+		this.tail.next = null;
+		
+		this.display();
+	}
+
 }
