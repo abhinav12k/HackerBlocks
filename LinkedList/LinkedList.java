@@ -373,13 +373,63 @@ public class LinkedList {
 		for (int i = 1; i < k; i++) {
 			fast = fast.next;
 		}
-		
+
 		while (fast.next != null) {
 			slow = slow.next;
 			fast = fast.next;
 		}
-		
+
 		return slow.data;
+	}
+
+	public int linkedListIntersection() {
+
+		Node a1 = new Node(10);
+		Node a2 = new Node(20);
+		Node a3 = new Node(30);
+		Node a4 = new Node(40);
+		Node a5 = new Node(50);
+		Node a6 = new Node(60);
+		Node b1 = new Node(70);
+		Node b2 = new Node(80);
+		Node b3 = new Node(90);
+		Node b4 = new Node(100);
+		Node b5 = new Node(110);
+		Node b6 = new Node(120);
+		a1.next = a2;
+		a2.next = a3;
+		a3.next = a4;
+		a4.next = a5;
+		a5.next = a6;
+		b1.next = b2;
+		b2.next = b3;
+		b3.next = b4;
+		b4.next = b5;
+		b5.next = b6;
+		b6.next = a3;
+
+		/*-----LOGIC------*/
+
+		Node fp = a1;
+		Node sp = b1;
+
+		while (fp != sp) {
+
+			if (fp == null) {
+				fp = b1;
+			} else {
+				fp = fp.next;
+			}
+
+			if (sp == null) {
+				sp = a1;
+			} else {
+				sp = sp.next;
+			}
+
+		}
+		return fp.data;
+
 	}
 
 }
