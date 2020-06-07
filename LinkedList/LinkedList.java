@@ -212,4 +212,45 @@ public class LinkedList {
 		}
 	}
 
+	public void reverseDataIteratively() throws Exception {
+
+		int left = 0;
+		int right = size - 1;
+
+		while (left <= right) {
+
+			Node leftNode = getNodeAt(left);
+			Node rightNode = getNodeAt(right);
+
+			int temp = leftNode.data;
+
+			leftNode.data = rightNode.data;
+			rightNode.data = temp;
+
+			left++;
+			right--;
+		}
+	}
+
+	public void reversePointerIteratively() {
+		
+		Node prev = head;
+		Node curr = head.next;
+		
+		while(curr!=null) {
+			
+			Node ahead = curr.next;
+			curr.next = prev;
+			
+			prev=curr;
+			curr=ahead;
+		}
+		
+		Node temp = head;
+		head = tail;
+		tail = temp;
+		tail.next = null;
+		
+	}
+	
 }

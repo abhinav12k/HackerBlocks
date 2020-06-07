@@ -13,15 +13,15 @@ public class LinkedListClient {
 		ll.addLast(50);
 		ll.display();
 
-		ll.removeLast();
-		ll.display();
+//		ll.removeLast();
+//		ll.display();
 
-		ll.addLast(100);
-		ll.display();
+//		ll.addLast(100);
+//		ll.display();
 
-		ll.addFirst(0);
-		ll.display();
-		
+//		ll.addFirst(0);
+//		ll.display();
+
 //		ll.addLast(100);
 //		ll.addLast(26);
 //		System.out.println(ll.getAt(2));
@@ -31,6 +31,12 @@ public class LinkedListClient {
 
 //		System.out.println(ll.getAt(2));
 
+		ll.reverseDataIteratively();
+		ll.display();
+
+		ll.reversePointerIteratively();
+		ll.display();
+		
 	}
 
 }
