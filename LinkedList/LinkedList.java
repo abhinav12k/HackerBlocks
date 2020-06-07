@@ -321,4 +321,33 @@ public class LinkedList {
 		hp.left = hp.left.next;
 	}
 
+	public void fold() {
+		fold(head, head, 0);
+	}
+
+	private Node fold(Node left, Node right, int count) {
+
+		if (right == null) {
+			return left;
+		}
+
+		left = fold(left, right.next, count + 1);
+
+		if (count > size / 2) {
+			Node ahead = left.next;
+			left.next = right;
+			right.next = ahead;
+			return ahead;
+		}
+
+		if (count == size / 2) {
+
+			tail = right;
+			tail.next = null;
+
+		}
+
+		return null;
+	}
+
 }

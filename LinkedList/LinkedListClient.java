@@ -45,6 +45,9 @@ public class LinkedListClient {
 		
 		ll.RDRHeap();
 		ll.display();
+		
+		ll.fold();
+		ll.display();
 	}
 
 }
