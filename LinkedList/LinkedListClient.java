@@ -48,6 +48,10 @@ public class LinkedListClient {
 		
 		ll.fold();
 		ll.display();
+		
+		System.out.println(ll.mid());
+		
+		System.out.println(ll.kthFromLast(3));
 	}
 
 }
