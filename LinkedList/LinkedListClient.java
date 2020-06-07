@@ -54,6 +54,13 @@ public class LinkedListClient {
 		System.out.println(ll.kthFromLast(3));
 		
 		System.out.println(ll.linkedListIntersection());
+		
+		ll.createDummyList();
+		System.out.println(ll.detectLoop());
+		
+		System.out.println(ll.detectLoopNremove());
+		ll.display();
+		
 	}
 
 }

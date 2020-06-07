@@ -432,4 +432,81 @@ public class LinkedList {
 
 	}
 
+	public void createDummyList() {
+		Node a1 = new Node(10);
+		Node a2 = new Node(20);
+		Node a3 = new Node(30);
+		Node a4 = new Node(40);
+		Node a5 = new Node(50);
+		Node a6 = new Node(60);
+		Node a7 = new Node(70);
+		Node a8 = new Node(80);
+		a1.next = a2;
+		a2.next = a3;
+		a3.next = a4;
+		a4.next = a5;
+		a5.next = a6;
+		a6.next = a7;
+		a7.next = a8;
+		a8.next = a3;
+		head = a1;
+	}
+
+	public boolean detectLoop() {
+
+		Node slow = head;
+		Node fast = head;
+
+		while (fast != null && fast.next != null) {
+
+			slow = slow.next;
+			fast = fast.next.next;
+
+			if (slow == fast) {
+				break;
+			}
+
+		}
+
+		if (slow == fast) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public boolean detectLoopNremove() {
+
+		Node slow = head;
+		Node fast = head;
+
+		while (fast != null && fast.next != null) {
+
+			slow = slow.next;
+			fast = fast.next.next;
+
+			if (slow == fast) {
+				break;
+			}
+
+		}
+
+		if (fast == slow) {
+			Node start = head;
+			Node temp = slow;
+			while (start.next != temp.next) {
+
+				start = start.next;
+				temp = temp.next;
+
+			}
+			temp.next = null;
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 }
