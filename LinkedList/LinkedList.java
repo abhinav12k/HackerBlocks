@@ -233,24 +233,92 @@ public class LinkedList {
 	}
 
 	public void reversePointerIteratively() {
-		
+
 		Node prev = head;
 		Node curr = head.next;
-		
-		while(curr!=null) {
-			
+
+		while (curr != null) {
+
 			Node ahead = curr.next;
 			curr.next = prev;
-			
-			prev=curr;
-			curr=ahead;
+
+			prev = curr;
+			curr = ahead;
 		}
-		
+
 		Node temp = head;
 		head = tail;
 		tail = temp;
 		tail.next = null;
-		
+
 	}
-	
+
+	public void RPR() {
+
+		reversePointerRecursively(head, head.next);
+		Node temp = head;
+		head = tail;
+		tail = temp;
+		tail.next = null;
+
+	}
+
+	private void reversePointerRecursively(Node prev, Node curr) {
+
+		if (curr == null) {
+			return;
+		}
+
+		reversePointerRecursively(curr, curr.next);
+		curr.next = prev;
+	}
+
+	public void RDR() {
+		reverseDataRecursively(head, head, 0);
+	}
+
+	private Node reverseDataRecursively(Node left, Node right, int count) {
+
+		if (right == null) {
+			return left;
+		}
+
+		Node ln = reverseDataRecursively(left, right.next, count + 1);
+
+		if (count >= size / 2) {
+			int temp = ln.data;
+			ln.data = right.data;
+			right.data = temp;
+		}
+
+		return ln.next;
+	}
+
+	public void RDRHeap() {
+		Heapmover hp = new Heapmover();
+		hp.left = head;
+		ReverseDataRecursivelyHeap(hp, head, 0);
+	}
+
+	public class Heapmover {
+		public Node left;
+	}
+
+	private void ReverseDataRecursivelyHeap(Heapmover hp, Node right, int count) {
+
+		if (right == null) {
+			return;
+		}
+
+		ReverseDataRecursivelyHeap(hp, right.next, count + 1);
+
+		if (count >= size / 2) {
+			int temp = hp.left.data;
+			hp.left.data = right.data;
+			right.data = temp;
+		}
+
+		hp.left = hp.left.next;
+	}
+
 }

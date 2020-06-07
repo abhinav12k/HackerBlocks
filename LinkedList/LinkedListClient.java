@@ -37,6 +37,14 @@ public class LinkedListClient {
 		ll.reversePointerIteratively();
 		ll.display();
 		
+		ll.RPR();
+		ll.display();
+		
+		ll.RDR();
+		ll.display();
+		
+		ll.RDRHeap();
+		ll.display();
 	}
 
 }
